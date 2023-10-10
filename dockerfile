@@ -46,45 +46,37 @@ RUN apt-get update && apt-get install -y \
 
 # Set up SSH key for ERP
 RUN mkdir -p /root/.ssh
-COPY /erp/id_rsa.pub /root/.ssh/id_rsa.pub
 COPY /erp/id_rsa /root/.ssh/id_rsa
-RUN chmod 600 /root/.ssh/id_rsa.pub
 RUN chmod 600 /root/.ssh/id_rsa
 
 # Clone your private ERP
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 RUN git clone git@github.com:interactinteractive-php/php_erp.git /var/www/html/erp/
-RUN rm /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
+RUN rm /root/.ssh/id_rsa
 
 # Set up SSH key for AssetsCore
 RUN mkdir -p /root/.ssh
-COPY /assetscore/id_rsa.pub /root/.ssh/id_rsa.pub
 COPY /assetscore/id_rsa /root/.ssh/id_rsa
-RUN chmod 600 /root/.ssh/id_rsa.pub
 RUN chmod 600 /root/.ssh/id_rsa
 
 # Clone your private AssetsCore
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 RUN git clone git@github.com:interactinteractive-php/php_assetscore.git /var/www/html/erp/assetscore/
-RUN rm /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
+RUN rm /root/.ssh/id_rsa
 
 # Set up SSH key for Helper
 RUN mkdir -p /root/.ssh
-COPY /helper/id_rsa.pub /root/.ssh/id_rsa.pub
 COPY /helper/id_rsa /root/.ssh/id_rsa
-RUN chmod 600 /root/.ssh/id_rsa.pub
 RUN chmod 600 /root/.ssh/id_rsa
 
 # Clone your private Helper
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 RUN git clone git@github.com:interactinteractive-php/php_helper.git /var/www/html/erp/helper/
-RUN rm /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
+RUN rm /root/.ssh/id_rsa
 
 # Set up SSH key for Libs
 RUN mkdir -p /root/.ssh
-COPY /libs/id_rsa.pub /root/.ssh/id_rsa.pub
 COPY /libs/id_rsa /root/.ssh/id_rsa
-RUN chmod 600 /root/.ssh/id_rsa.pub
 RUN chmod 600 /root/.ssh/id_rsa
 
 # Clone your private Libs
@@ -94,15 +86,13 @@ RUN rm /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
 
 # Set up SSH key for Middleware
 RUN mkdir -p /root/.ssh
-COPY /middleware/id_rsa.pub /root/.ssh/id_rsa.pub
 COPY /middleware/id_rsa /root/.ssh/id_rsa
-RUN chmod 600 /root/.ssh/id_rsa.pub
 RUN chmod 600 /root/.ssh/id_rsa
 
 # Clone your private Middleware
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 RUN git clone git@github.com:interactinteractive-php/php_middleware.git /var/www/html/erp/middleware/
-RUN rm /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
+RUN rm /root/.ssh/id_rsa
 
 # Copy the nginx config as default
 RUN mkdir -p /var/www/html/erp/config
