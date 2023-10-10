@@ -41,7 +41,8 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get update && apt-get install -y \
     wget \
     unzip \
-    git openssh-client
+    git \
+    openssh-client
 
 # Set up SSH key for ERP
 RUN mkdir -p /root/.ssh
