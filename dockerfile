@@ -48,7 +48,7 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /root/.ssh
 COPY /erp/id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
-RUN eval $(ssh-agent -s) && ssh-add /root/.ssh/id_rsa
+RUN ssh-add /root/.ssh/id_rsa
 
 # Clone your private ERP
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
@@ -59,7 +59,7 @@ RUN rm /root/.ssh/id_rsa
 RUN mkdir -p /root/.ssh
 COPY /assetscore/id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
-RUN eval $(ssh-agent -s) && ssh-add /root/.ssh/id_rsa
+RUN ssh-add /root/.ssh/id_rsa
 
 # Clone your private AssetsCore
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
@@ -70,7 +70,7 @@ RUN rm /root/.ssh/id_rsa
 RUN mkdir -p /root/.ssh
 COPY /helper/id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
-RUN eval $(ssh-agent -s) && ssh-add /root/.ssh/id_rsa
+RUN ssh-add /root/.ssh/id_rsa
 
 # Clone your private Helper
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
@@ -81,7 +81,7 @@ RUN rm /root/.ssh/id_rsa
 RUN mkdir -p /root/.ssh
 COPY /libs/id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
-RUN eval $(ssh-agent -s) && ssh-add /root/.ssh/id_rsa
+RUN ssh-add /root/.ssh/id_rsa
 
 # Clone your private Libs
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
@@ -92,7 +92,7 @@ RUN rm /root/.ssh/id_rsa
 RUN mkdir -p /root/.ssh
 COPY /middleware/id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
-RUN eval $(ssh-agent -s) && ssh-add /root/.ssh/id_rsa
+RUN ssh-add /root/.ssh/id_rsa
 
 # Clone your private Middleware
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
