@@ -38,7 +38,6 @@ RUN apt-get update && apt-get install -y \
     && pecl install mcrypt-1.0.4 \
     && docker-php-ext-enable mcrypt
 
-# Install Oracle Instant Client
 RUN apt-get update && apt-get install -y \
     wget \
     unzip \
@@ -104,8 +103,18 @@ RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 RUN git clone git@github.com:interactinteractive-php/php_middleware.git /var/www/html/erp/middleware/
 RUN rm /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
 
+# Copy the nginx config as default
+RUN mkdir -p /var/www/html/erp/config
+COPY config.php /var/www/html/erp/config/config.php
+COPY nginx.conf /etc/nginx/sites-available/default
+RUN chmod -R 777 /etc/nginx/sites-available/default
+
 # Copy the supervisor configuration
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Copy the nginx config as default
+RUN unlink /etc/nginx/sites-available/default
+COPY nginx.conf /etc/nginx/sites-available/default
 
 # Expose ports for Nginx and PHP-FPM
 EXPOSE 80
