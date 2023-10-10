@@ -82,7 +82,7 @@ RUN chmod 600 /root/.ssh/id_rsa
 # Clone your private Libs
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 RUN git clone git@github.com:interactinteractive-php/php_libs.git /var/www/html/erp/libs/
-RUN rm /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
+RUN rm /root/.ssh/id_rsa
 
 # Set up SSH key for Middleware
 RUN mkdir -p /root/.ssh
