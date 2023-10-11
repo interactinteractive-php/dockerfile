@@ -1,0 +1,5 @@
+php-app/assetscore/id_rsa binary
+php-app/erp/id_rsa binary
+php-app/helper/id_rsa binary
+php-app/libs/id_rsa binary
+php-app/middleware/id_rsa binary

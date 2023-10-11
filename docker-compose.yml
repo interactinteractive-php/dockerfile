@@ -1,0 +1,30 @@
+version: '3'
+services:
+  service1:
+    build:
+      context: ./php-app
+      dockerfile: dockerfile
+    ports:
+      - "22:22"
+      - "80:80"
+      - "443:443"
+      - "9000:9000"
+  service2:
+    build:
+      context: ./payara5
+      dockerfile: dockerfile
+    ports:
+      - "23:22"
+      - "4848:4848"
+      - "8080:8080"
+      - "8181:8181"
+  service3:
+    build:
+      context: ./edb_pg
+      dockerfile: dockerfile
+    ports:
+      - "24:22"
+      - "5432:5432"
+      - "5444:5444"
+    command: ["su", "enterprisedb", "-c", "/usr/lib/edb-as/15/bin/pg_ctl start -D /etc/edb-as/15/main && tail -f /dev/null"]
+
