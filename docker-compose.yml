@@ -26,5 +26,4 @@ services:
       - "24:22"
       - "5432:5432"
       - "5444:5444"
-    command: ["su", "enterprisedb", "-c", "/usr/lib/edb-as/15/bin/pg_ctl start -D /etc/edb-as/15/main && tail -f /dev/null"]
 

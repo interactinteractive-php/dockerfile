@@ -21,4 +21,4 @@ ENV DB_SID="dbsid"
 ENV DB_DRIVER="mysql"
 
 # Start supervisor
-CMD ["asadmin", "start-domain", "--verbose"]
+CMD [tail -f /dev/null"]
