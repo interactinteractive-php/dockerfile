@@ -48,7 +48,6 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /root/.ssh
 COPY /erp/id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
-RUN ssh-add /root/.ssh/id_rsa
 
 # Clone your private ERP
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
@@ -59,7 +58,6 @@ RUN rm /root/.ssh/id_rsa
 RUN mkdir -p /root/.ssh
 COPY /assetscore/id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
-RUN ssh-add /root/.ssh/id_rsa
 
 # Clone your private AssetsCore
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
@@ -70,7 +68,6 @@ RUN rm /root/.ssh/id_rsa
 RUN mkdir -p /root/.ssh
 COPY /helper/id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
-RUN ssh-add /root/.ssh/id_rsa
 
 # Clone your private Helper
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
@@ -81,7 +78,6 @@ RUN rm /root/.ssh/id_rsa
 RUN mkdir -p /root/.ssh
 COPY /libs/id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
-RUN ssh-add /root/.ssh/id_rsa
 
 # Clone your private Libs
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
@@ -92,7 +88,6 @@ RUN rm /root/.ssh/id_rsa
 RUN mkdir -p /root/.ssh
 COPY /middleware/id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
-RUN ssh-add /root/.ssh/id_rsa
 
 # Clone your private Middleware
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
@@ -116,6 +111,35 @@ COPY nginx.conf /etc/nginx/sites-available/default
 EXPOSE 80
 EXPOSE 443
 EXPOSE 9000
+
+# Set all ENV variables
+
+ENV URL_PROTOCOL="https"
+ENV URL="example.com"
+ENV DIRECTORY_SEPARATOR="/"
+ENV GF_SERVICE_ADDRESS="localhost"
+ENV SERVICE_FULL_ADDRESS="http://localhost:8080"
+ENV CACHE_PATH="/var/cache"
+ENV DB_HOST="db.example.com"
+ENV DB_NAME="mydatabase"
+ENV DB_USER="dbuser"
+ENV DB_PASS="dbpassword"
+ENV DB_SID="dbsid"
+ENV DB_DRIVER="mysql"
+ENV SESSION_PREFIX="mysession"
+ENV SESSION_LIFETIME="3600"
+ENV CONFIG_TIMEZONE="UTC"
+ENV CONFIG_META_IMPORT="enabled"
+ENV SMTP_HOST="smtp.example.com"
+ENV SMTP_PORT="587"
+ENV SMTP_USER="smtpuser"
+ENV SMTP_PASS="smtppassword"
+ENV SMTP_SECURE="tls"
+ENV SMTP_AUTH="true"
+ENV SMTP_SSL_VERIFY="true"
+ENV EMAIL_FROM="you@example.com"
+ENV EMAIL_FROM_NAME="Your Name"
+ENV CONFIG_FILE_VIEWER_ADDRESS="http://fileviewer.example.com"
 
 # Start supervisor
 CMD ["/usr/bin/supervisord"]
