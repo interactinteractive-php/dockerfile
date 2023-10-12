@@ -1,11 +1,7 @@
 # Use the official PHP 7.4-FPM image as a base
 FROM ubuntu:latest
 
-# Copy your custom entry point script into the container
-# COPY entrypoint.sh /entrypoint.sh
 
-# Make the custom entry point script the entry point for the container
-# ENTRYPOINT ["/entrypoint.sh"]
 ENV DEBIAN_FRONTEND=noninteractive
 
 
