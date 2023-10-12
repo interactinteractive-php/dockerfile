@@ -1,6 +1,6 @@
 version: '3'
 services:
-  service1:
+  php-app:
     build:
       context: ./php-app
       dockerfile: dockerfile
@@ -9,7 +9,7 @@ services:
       - "80:80"
       - "443:443"
       - "9000:9000"
-  service2:
+  payara5:
     build:
       context: ./payara5
       dockerfile: dockerfile
@@ -18,7 +18,7 @@ services:
       - "4848:4848"
       - "8080:8080"
       - "8181:8181"
-  service3:
+  edbpg:
     build:
       context: ./edb_pg
       dockerfile: dockerfile
